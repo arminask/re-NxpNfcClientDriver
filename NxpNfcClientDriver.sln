@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "NxpNfcClientDriver", "NxpNfcClientDriver.vcxproj", "{C2E80792-89EE-4903-82D2-23879A250B43}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "NfcCoreVerified", "NfcCoreVerified.vcxproj", "{65ED79CE-1068-4D60-90C7-1C9267203BF6}"
+EndProject
+Project("{BC8A1FFA-BEE3-4634-8014-F334798102B3}") = "NxpNfcClientDriverPackage", "NxpNfcClientDriverPackage.vcxproj", "{E160A6ED-981C-4C7D-BDE9-337335099F3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|ARM64 = Debug|ARM64
+		Release|x64 = Release|x64
+		Release|ARM64 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Debug|x64.ActiveCfg = Debug|x64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Debug|x64.Build.0 = Debug|x64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Debug|ARM64.Build.0 = Debug|ARM64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Release|x64.ActiveCfg = Release|x64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Release|x64.Build.0 = Release|x64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Release|ARM64.ActiveCfg = Release|ARM64
+		{C2E80792-89EE-4903-82D2-23879A250B43}.Release|ARM64.Build.0 = Release|ARM64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Debug|x64.ActiveCfg = Debug|x64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Debug|x64.Build.0 = Debug|x64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Debug|ARM64.Build.0 = Debug|ARM64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Release|x64.ActiveCfg = Release|x64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Release|x64.Build.0 = Release|x64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Release|ARM64.ActiveCfg = Release|ARM64
+		{65ED79CE-1068-4D60-90C7-1C9267203BF6}.Release|ARM64.Build.0 = Release|ARM64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Debug|x64.ActiveCfg = Debug|x64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Debug|x64.Build.0 = Debug|x64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Debug|ARM64.Build.0 = Debug|ARM64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Release|x64.ActiveCfg = Release|x64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Release|x64.Build.0 = Release|x64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Release|ARM64.ActiveCfg = Release|ARM64
+		{E160A6ED-981C-4C7D-BDE9-337335099F3A}.Release|ARM64.Build.0 = Release|ARM64
+	EndGlobalSection
+EndGlobal

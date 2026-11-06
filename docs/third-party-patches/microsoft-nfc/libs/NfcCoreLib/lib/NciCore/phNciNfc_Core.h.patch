@@ -1,0 +1,17 @@
+--- upstream/libs/NfcCoreLib/lib/NciCore/phNciNfc_Core.h
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_Core.h
+@@ -701,14 +701,6 @@
+     uint16_t RoutingTableSize;                          /**<Maximum Routing table size*/
+     uint8_t CntrlPktPayloadLen;                         /**<Maximum payload length of a NCI control Packet Valid range
+                                                             32 to 255*/
+-    uint8_t DataHCIPktPayloadLen;                       /**<Maximum payload length of a NCI data Packet that the NFCC
+-                                                            is able to receive on the static HCI Connection Valid range
+-                                                            32 to 255. If not, the value SHALL be 0*/
+-    uint8_t DataHCINumCredits;                          /**<Initial Number of Credits for this Connection*/
+-    uint16_t MaxNFCVFrameSize;                          /**<Maximum payload length of an NFC-V Standard Frame supported
+-                                                            by the NFC Controller for transfer of Commands and reception
+-                                                            of Responses, when configured to Poll for NFC-V technology.
+-                                                            Value should be at least 64 bytes*/
+     uint16_t MaxSizeLarge;                              /**<The maximum size in octets for the sum of the
+                                                             sizes of PB_H_INFO and LB_H_INFO_RESP parameter values.*/
+     uint8_t ManufacturerId;                             /**<IC Manufacturer ID */

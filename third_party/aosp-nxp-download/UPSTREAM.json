@@ -1,0 +1,185 @@
+{
+  "repository": "https://android.googlesource.com/platform/external/libnfc-nci",
+  "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+  "license": "Apache-2.0",
+  "files": [
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Utils.c",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Utils.c",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Utils.c",
+      "upstream_sha256": "5f710973e5ed8535578c78bb53ddf4975f45574649af62041d4e37636b34abc5",
+      "local_sha256": "fa4d23395dbf61cef4713e90e807d010491a9a8d3a51ef8bef0bc6da4af11dfd",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": true,
+      "local_changes": [
+        "Explicit uint16_t narrowing for MSVC /W4; arithmetic unchanged."
+      ],
+      "original_translation_units": [
+        "NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c"
+      ],
+      "original_symbols": [
+        "phDnldNfc_CalcCrc16"
+      ],
+      "compiled_via": "src/NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c",
+      "audit_evidence": "evidence/DOWNLOAD-CRC.md",
+      "pre_modification_notice_sha256": "ab635e8c4656159ac1b8699aa5a966d54e57a77c823c657d5f8db1eee931ce2d",
+      "modification_notice": "Prominent in-file modification notice added 2026-10-30; implementation unchanged by this notice update."
+    },
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "upstream_sha256": "0b72651a2745f65f2e917c35147bebcceae131aa749c93c01d4a74d6b672faca",
+      "local_sha256": "7038ad21fd4ba6e0eee6b0e3a78d2402027f7e44b2762de3365983a355d88767",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": true,
+      "local_changes": [
+        "Select only four audited functions; preserve static timer routines.",
+        "Disable optional Android VEN-reset-on-timeout branch: absent in reference.",
+        "Use private PDB context and external OSAL/state-engine declarations from original TU."
+      ],
+      "original_translation_units": [
+        "NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c"
+      ],
+      "original_symbols": [
+        "phDnldNfc_CmdHandler",
+        "phDnldNfc_RspTimeOutCb",
+        "phDnldNfc_ResendTimeOutCb",
+        "phDnldNfc_SetupResendTimer"
+      ],
+      "compiled_via": "src/NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c",
+      "audit_evidence": "evidence/DOWNLOAD-DISPATCH.md",
+      "pre_modification_notice_sha256": "f804766c0c26a544439438fae2458d53bc6903c26088f665d0b82fc292222689",
+      "modification_notice": "Prominent in-file modification notice added 2026-10-30; implementation unchanged by this notice update."
+    },
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Utils.h",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Utils.h",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Utils.h",
+      "upstream_sha256": "ccad7c53a68d699ef07832c804ee652eb0b31c7eead7fed1a5bf69ef417c37a0",
+      "local_sha256": "ccad7c53a68d699ef07832c804ee652eb0b31c7eead7fed1a5bf69ef417c37a0",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": false,
+      "local_changes": []
+    },
+    {
+      "path": "LICENSE.txt",
+      "upstream_path": "NOTICE",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/NOTICE",
+      "upstream_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "local_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": false,
+      "local_changes": []
+    },
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Internal_Sequence.inc",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "upstream_sha256": "0b72651a2745f65f2e917c35147bebcceae131aa749c93c01d4a74d6b672faca",
+      "local_sha256": "d5129df7794d79c26e6f8f88aafc6ec9cd4bcc5f8215e853f832da488201b252",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": true,
+      "local_changes": [
+        "Select two audited static functions; original private C TU supplies declarations.",
+        "Pass private PDB pHwRef to Write/Read/ReadAbort; algorithm unchanged."
+      ],
+      "original_translation_units": [
+        "NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c"
+      ],
+      "original_symbols": [
+        "phDnldNfc_ProcessRecvInfo",
+        "phDnldNfc_ProcessSeqState"
+      ],
+      "compiled_via": "src/NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c",
+      "audit_evidence": "evidence/DOWNLOAD-NORMAL-SEQUENCE.md",
+      "pre_modification_notice_sha256": "3e72a4231decd4a0bbb5bb3a287b60075836d40c475bd0b1a8847cc03507a115",
+      "modification_notice": "Prominent in-file modification notice added 2026-10-30; implementation unchanged by this notice update."
+    },
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Internal_RW.inc",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "upstream_sha256": "0b72651a2745f65f2e917c35147bebcceae131aa749c93c01d4a74d6b672faca",
+      "local_sha256": "744d56d3c1228943d1f281ffa180bd02b2fd84732af61c41f211256a68858c71",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": true,
+      "local_changes": [
+        "Select audited static read/write sequence.",
+        "Pass private PDB pHwRef to two Write, one Read and two ReadAbort calls; algorithm unchanged."
+      ],
+      "original_translation_units": [
+        "NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c"
+      ],
+      "original_symbols": [
+        "phDnldNfc_ProcessRWSeqState"
+      ],
+      "compiled_via": "src/NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c",
+      "audit_evidence": "evidence/DOWNLOAD-RW-SEQUENCE.md",
+      "pre_modification_notice_sha256": "4cf924f65b4133341499fb5aa526449fe083ea3769b3b64b8ed9da205fd55a6b",
+      "modification_notice": "Prominent in-file modification notice added 2026-10-30; implementation unchanged by this notice update."
+    },
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Internal_Frame.inc",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "upstream_sha256": "0b72651a2745f65f2e917c35147bebcceae131aa749c93c01d4a74d6b672faca",
+      "local_sha256": "fe9230371197e123d02abd597fcf1dddbd553dcc81b5546423012ff66579d7ff",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": true,
+      "local_changes": [
+        "Select two audited static frame envelope helpers and required original constants; private context supplied by original C TU."
+      ],
+      "original_translation_units": [
+        "NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c"
+      ],
+      "original_symbols": [
+        "phDnldNfc_BuildFramePkt",
+        "phDnldNfc_ProcessFrame"
+      ],
+      "compiled_via": "src/NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c",
+      "audit_evidence": "evidence/DOWNLOAD-FRAME.md",
+      "pre_hardening_sha256": "c47f5136069dd10d3a481fc60317cc6d4907d63a9db45aa0e0cec9e7e91865b0",
+      "local_hardening": "Validate minimum complete frame length and caller capacity before CRC and raw response copy.",
+      "pre_modification_notice_sha256": "a0c338426f542c48e3f04c201f23b0d9ecc15c537c41194dd4de9845d12f84be",
+      "modification_notice": "Prominent in-file modification notice added 2026-10-30; implementation unchanged by this notice update."
+    },
+    {
+      "path": "halimpl/pn54x/dnld/phDnldNfc_Internal_Payload.inc",
+      "upstream_path": "halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "revision": "121096a3511ea4ac559dea3ef7d39f0df00c97a6",
+      "url": "https://android.googlesource.com/platform/external/libnfc-nci/+/121096a3511ea4ac559dea3ef7d39f0df00c97a6/halimpl/pn54x/dnld/phDnldNfc_Internal.c",
+      "upstream_sha256": "0b72651a2745f65f2e917c35147bebcceae131aa749c93c01d4a74d6b672faca",
+      "local_sha256": "2ce6ce04948e51cfffce43e21678de8a9055e44d703a6c796a456f5d08da382d",
+      "source_checksum_verified": false,
+      "behavioral_adaptation": true,
+      "local_changes": [
+        "Select two audited static payload/response functions and required constants.",
+        "Select upstream EEPROM offset023c/length0c80 option matching private x64 literals; no controller-support inference."
+      ],
+      "original_translation_units": [
+        "NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c"
+      ],
+      "original_symbols": [
+        "phDnldNfc_CreateFramePld",
+        "phDnldNfc_UpdateRsp"
+      ],
+      "compiled_via": "src/NfcCx/Clients/NxpCoreLib/phDnldNfc_Internal.c",
+      "audit_evidence": "evidence/DOWNLOAD-PAYLOAD.md",
+      "pre_hardening_sha256": "d8da3654b387199727d71528431735fc75b10c72f39a5fae528ef6cf271c0571",
+      "local_hardening": "Validate image record spans, original response capacity, complete read-log response fields and bounded copies; firmware version error propagates failure.",
+      "pre_modification_notice_sha256": "780d75ae2f48b3686b92c757caacb16c5056593307d5eb057226859a6d6f768b",
+      "modification_notice": "Prominent in-file modification notice added 2026-10-30; implementation unchanged by this notice update."
+    }
+  ],
+  "scope": "Twelve audited routines: CRC, dispatch, timers, sequences, frames, payloads and responses, plus CRC header. No Android context, TML implementation, class extension or firmware copied.",
+  "hardening_evidence": "docs/NXP-NFC-HARDENING.md; tests/run-tests.ps1; .work/NXP_NFC_FIX_RESULTS.md",
+  "licensing_scope": "Apache-2.0 for the identified published upstream portions; local adapters/shim and proprietary-derived reconstruction require separate rights assessment. See licenses/README.md."
+}

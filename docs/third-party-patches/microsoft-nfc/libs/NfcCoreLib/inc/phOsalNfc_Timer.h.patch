@@ -1,0 +1,15 @@
+--- upstream/libs/NfcCoreLib/inc/phOsalNfc_Timer.h
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/inc/phOsalNfc_Timer.h
+@@ -96,3 +96,12 @@
+  * \param[in]  TimerId	timer identifier to delete the timer.
+  */
+ void phOsalNfc_Timer_Delete(uint32_t TimerId);
++
++/* Local lifecycle barrier: call on the callback thread before protocol disposal. */
++#ifdef __cplusplus
++extern "C" {
++#endif
++void phOsalNfc_Timer_StopAll(void);
++#ifdef __cplusplus
++}
++#endif

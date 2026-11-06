@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" TreatAsLocalProperty="VisualStudioVersion" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64"><Configuration>Debug</Configuration><Platform>ARM64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64"><Configuration>Release</Configuration><Platform>ARM64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E160A6ED-981C-4C7D-BDE9-337335099F3A}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Configuration Condition="'$(Configuration)'==''">Release</Configuration>
+    <Platform Condition="'$(Platform)'==''">x64</Platform>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)signing.local.props" Condition="Exists('$(ProjectDir)signing.local.props')" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <DriverType>Package</DriverType>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <TargetVersion>Windows10</TargetVersion>
+    <UseDebugLibraries>$(NxpUseDebugLibraries)</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)out\$(Platform)\$(Configuration)\staging\</OutDir>
+    <IntDir>$(ProjectDir)out\$(Platform)\$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <PackageDir>$(ProjectDir)out\$(Platform)\$(Configuration)\package\</PackageDir>
+    <!-- Our scripts preserve the certificate store and expose trust failures.
+         WDK's automatic test-certificate/trust provisioning is never invoked. -->
+    <SignMode>Off</SignMode>
+    <EnableInf2cat>false</EnableInf2cat>
+    <DriverCatalog_Enable>false</DriverCatalog_Enable>
+    <NxpTestSign Condition="'$(NxpTestSign)'==''">true</NxpTestSign>
+    <NxpTrustedSignatureArgument Condition="'$(NxpRequireTrustedSignature)'=='true'">-RequireTrustedSignature</NxpTrustedSignatureArgument>
+    <NxpIsolationArgument Condition="'$(NxpRequireIsolation)'=='true'">-RequireIsolation</NxpIsolationArgument>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="NxpNfcClientDriver.vcxproj">
+      <Project>{C2E80792-89EE-4903-82D2-23879A250B43}</Project>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <FilesToPackage Include="$(ProjectDir)out\$(Platform)\$(Configuration)\bin\NxpNfcClientDriver.dll" />
+    <FilesToPackage Include="$(ProjectDir)package\NxpNfcClientDriver.inf" />
+    <FilesToPackage Include="$(ProjectDir)firmware\NXPPN547FW.DAT" />
+    <FilesToPackage Include="$(ProjectDir)firmware\NXPPN548FW.DAT" />
+    <None Include="package\NxpNfcClientDriver.inf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Target Name="ValidateAndSignNxpPackage" AfterTargets="DriverPackageTarget">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)scripts\package.ps1&quot; -Platform &quot;$(Platform)&quot; -Configuration &quot;$(Configuration)&quot; -TestSign &quot;$(NxpTestSign)&quot; -CertificateThumbprint &quot;$(NxpSigningCertificate)&quot; $(NxpTrustedSignatureArgument) $(NxpIsolationArgument)" />
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)scripts\verify-build.ps1&quot; -Platform &quot;$(Platform)&quot; -Configuration &quot;$(Configuration)&quot;" />
+  </Target>
+</Project>

@@ -1,0 +1,91 @@
+; Reconstructed client: local development only. No hardware validation claimed.
+; Original seven ACPI identities are preserved as evidence-backed candidates.
+[Version]
+Signature="$Windows NT$"
+Class=Proximity
+ClassGuid={5630831C-06C9-4856-B327-F5D32586E060}
+Provider=%Provider%
+CatalogFile.NTamd64=NxpNfcClientDriver-x64.cat
+CatalogFile.NTarm64=NxpNfcClientDriver-ARM64.cat
+DriverVer=10/29/2026,0.1.0.0
+PnpLockdown=1
+
+[Manufacturer]
+%Provider%=NXP,NTamd64.10.0...26100,NTarm64.10.0...26100
+
+[NXP.NTamd64.10.0...26100]
+%DeviceName%=NxpInstall,ACPI\NXP1000
+%DeviceName%=NxpInstall,ACPI\NXP1001
+%DeviceName%=NxpInstall,ACPI\NXP1002
+%DeviceName%=NxpInstall,ACPI\NXP1003
+%DeviceName%=NxpInstall,ACPI\NXP7471
+%DeviceName%=NxpInstall,ACPI\NXP8013
+%DeviceName%=NxpInstall,ACPI\NXP3001
+
+[NXP.NTarm64.10.0...26100]
+%DeviceName%=NxpInstall,ACPI\NXP1000
+%DeviceName%=NxpInstall,ACPI\NXP1001
+%DeviceName%=NxpInstall,ACPI\NXP1002
+%DeviceName%=NxpInstall,ACPI\NXP1003
+%DeviceName%=NxpInstall,ACPI\NXP7471
+%DeviceName%=NxpInstall,ACPI\NXP8013
+%DeviceName%=NxpInstall,ACPI\NXP3001
+
+[SourceDisksNames]
+1=%DiskName%
+[SourceDisksFiles]
+NxpNfcClientDriver.dll=1
+NXPPN547FW.DAT=1
+NXPPN548FW.DAT=1
+[DestinationDirs]
+DriverFiles=13
+FirmwareFiles=13
+[DriverFiles]
+NxpNfcClientDriver.dll
+[FirmwareFiles]
+NXPPN547FW.DAT
+NXPPN548FW.DAT
+
+[NxpInstall.NT]
+Include=WUDFRD.inf
+Needs=WUDFRD.NT
+CopyFiles=DriverFiles,FirmwareFiles
+[NxpInstall.NT.HW]
+Include=WUDFRD.inf
+Needs=WUDFRD.NT.HW
+AddReg=NxpDeviceConfiguration
+[NxpInstall.NT.Services]
+Include=WUDFRD.inf
+Needs=WUDFRD.NT.Services
+[NxpInstall.NT.Wdf]
+UmdfService=NxpNfcClientDriver,NxpService
+UmdfServiceOrder=NxpNfcClientDriver
+UmdfDirectHardwareAccess=AllowDirectHardwareAccess
+UmdfFileObjectPolicy=AllowNullAndUnknownFileObjects
+UmdfImpersonationLevel=Impersonation
+[NxpService]
+UmdfLibraryVersion=2.15.0
+ServiceBinary=%13%\NxpNfcClientDriver.dll
+UmdfExtensions=NfcCx0102
+
+[NxpDeviceConfiguration]
+; Firmware lookup formats ROMVersion in hexadecimal: "10" means ROM 0x10.
+; INF expands DIRID 13 to an absolute path. The existing CreateFileW loader
+; accepts it directly; no source change or System32 firmware copy is needed.
+HKR,FirmwareMap,"8",0x00000000,"%13%\NXPPN547FW.DAT"
+HKR,FirmwareMap,"10",0x00000000,"%13%\NXPPN548FW.DAT"
+HKR,NxpNfcClientDriver,"RfConfigData",0x00000001,00
+HKR,NxpNfcClientDriver,"EEPROMConfigBlob",0x00000001,00
+HKR,NxpNfcClientDriver,"RfSessionMgmt",0x00010001,1
+HKR,NxpNfcClientDriver,"KeepRfData",0x00010001,1
+
+ ; CustomEEPROMConfigBlob, CustomKeepRfData and I2cAddress are optional
+; device hardware-key values (HKR in this section), provisioned per device.
+; No global HKLM Proximity key or custom ACL is required.
+
+[ControlFlags]
+ExcludeFromSelect=*
+[Strings]
+Provider="Local NXP reconstruction development"
+DiskName="Reconstructed NXP NFC client development package"
+DeviceName="Reconstructed NXP NFC client (development)"

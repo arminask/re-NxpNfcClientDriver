@@ -1,0 +1,24 @@
+--- upstream/halimpl/pn54x/dnld/phDnldNfc_Utils.c
++++ included/third_party/aosp-nxp-download/halimpl/pn54x/dnld/phDnldNfc_Utils.c
+@@ -12,6 +12,12 @@
+  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  * See the License for the specific language governing permissions and
+  * limitations under the License.
++ */
++
++/* Modified for this repository; notice added 2026-10-30.
++ * Extracted/adapted from the pinned AOSP source for the Windows driver.
++ * Local changes are listed in ../../../UPSTREAM.json and
++ * licenses/README.md at the repository root. Original notices are retained.
+  */
+ 
+ /*
+@@ -75,7 +81,7 @@
+         {
+            wValue = 0x00ffU & (uint16_t) pBuff[i];
+            wTmp = (wCrc >> 8U) ^ wValue;
+-           wCrc = (wCrc << 8U) ^ aCrcTab[wTmp];
++           wCrc = (uint16_t)((wCrc << 8U) ^ aCrcTab[wTmp]);
+         }
+     }
+ 

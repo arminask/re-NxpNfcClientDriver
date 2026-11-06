@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{A4FE241F-80B8-5E8F-BCC3-5FCA89839C33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\NfcCx\Clients\NfcI2C">
+      <UniqueIdentifier>{07380BBC-0BE5-5355-86B0-DA563FFC46BC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\NfcCx\Clients\NxpCoreLib">
+      <UniqueIdentifier>{5A98BA98-5C60-5394-9E6A-90059D2CC43E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\libs\NciParsers">
+      <UniqueIdentifier>{312FDB5D-EBAB-58B7-9922-27E9B91534ED}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\driver.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\device.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\utils.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\libs\NciParsers\NciPacketParser.cpp">
+      <Filter>src\libs\NciParsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\sequence.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\msgqueue.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\NfcEEProm.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\handler.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\NfcRegistry.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\acpi.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\tml.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\NfcProximityBusI2c.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\vendortest.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\NfcNxpProprietary.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Common.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Context.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Extensions.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_RfConfigProp.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NfcI2C\firmware.cpp">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc_Internal.c">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClCompile>
+    <ClInclude Include="include\nci_packet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_nci_context.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_sequence_bridge.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_trace.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_utils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\acpi.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\device.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\driver.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\NfcNxpProprietary.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\NfcProximityBusI2c.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\nfcproximitybusinterface.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\tml.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\vendortest.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc_Internal.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Common.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Extensions.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_RfConfigProp.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Sequence.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

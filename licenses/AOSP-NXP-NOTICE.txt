@@ -1,0 +1,11 @@
+Repository attribution notice (locally written; not the upstream NOTICE file).
+
+Selected download source: Copyright (C) 2010-2014 NXP Semiconductors.
+Source: AOSP external/libnfc-nci, revision
+121096a3511ea4ac559dea3ef7d39f0df00c97a6.
+
+The pinned upstream NOTICE contains the Apache License, Version 2.0; that full
+text is retained in third_party/aosp-nxp-download/LICENSE.txt and in
+licenses/AOSP-NXP-Apache-2.0.txt. Original per-file copyright/license notices
+are retained. Adapted files carry modification notices; details are in
+third_party/aosp-nxp-download/UPSTREAM.json.s

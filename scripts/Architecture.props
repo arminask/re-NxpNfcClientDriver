@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- The original MSVC x64 build gives volatile accesses acquire/release
+       ordering. Preserve that contract in the ARM64 source port. This does
+       not make compound state atomic or solve callback/lifetime races. -->
+  <ItemDefinitionGroup Condition="'$(Platform)'=='ARM64'">
+    <ClCompile>
+      <AdditionalOptions>/volatile:ms %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>

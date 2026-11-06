@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build" TreatAsLocalProperty="VisualStudioVersion">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{65ED79CE-1068-4D60-90C7-1C9267203BF6}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Configuration Condition="'$(Configuration)'==''">Release</Configuration>
+    <Platform Condition="'$(Platform)'==''">x64</Platform>
+  </PropertyGroup>
+  <Import Project="$(ProjectDir)signing.local.props" Condition="Exists('$(ProjectDir)signing.local.props')" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>WindowsUserModeDriver10.0</PlatformToolset>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <TargetVersion>Windows10</TargetVersion>
+    <UMDF_VERSION_MAJOR>2</UMDF_VERSION_MAJOR>
+    <UseDebugLibraries>$(NxpUseDebugLibraries)</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(ProjectDir)scripts\Architecture.props" />
+  <PropertyGroup>
+    <OutDir>$(ProjectDir)out\$(Platform)\$(Configuration)\bin\</OutDir>
+    <IntDir>$(ProjectDir)out\$(Platform)\$(Configuration)\obj\$(ProjectName)\</IntDir>
+    <NfcUpstream>$(ProjectDir)third_party\microsoft-nfc\libs\NfcCoreLib\</NfcUpstream>
+    <EnableInf2cat>false</EnableInf2cat>
+    <SignMode>Off</SignMode>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <CompileAs>CompileAsC</CompileAs>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(NfcUpstream)inc;$(NfcUpstream)lib\Inc;$(NfcUpstream)lib\Osal;$(NfcUpstream)lib\NciCore;$(IntDir);$(WindowsSdkDir)Include\$(WindowsTargetPlatformVersion)\km;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;_WIN32_WINNT=0x0A00;UMDF_USING_NTSTATUS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StructMemberAlignment>8Bytes</StructMemberAlignment>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <WppEnabled>true</WppEnabled>
+      <WppModuleName>NfcCoreLib</WppModuleName>
+      <WppScanConfigurationData>$(NfcUpstream)lib\Inc\NfcCoreLibTracing.h</WppScanConfigurationData>
+      <WppAdditionalOptions>-scan:"$(NfcUpstream)inc\phNfcTraceEnums.h" -scan:"$(NfcUpstream)lib\NciCore\phNciNfc_DbgDescription.h" %(WppAdditionalOptions)</WppAdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Nci\phNciNfc_Sequence.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreIf.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreMemMgr.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecv.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecvMgr.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_MsgQueue.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_Timer.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreUtils.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_TlvUtils.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_LoglConnMgmt.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_Core.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreSend.c" />
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_DbgDescription.c" />
+  </ItemGroup>
+  <PropertyGroup>
+    <SupportsPackaging>false</SupportsPackaging>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\nci_packet.h" />
+    <ClInclude Include="include\nxp_nci_context.h" />
+    <ClInclude Include="include\nxp_sequence_bridge.h" />
+    <ClInclude Include="include\nxp_trace.h" />
+    <ClInclude Include="include\nxp_utils.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\acpi.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\device.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\driver.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\NfcNxpProprietary.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\NfcProximityBusI2c.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\nfcproximitybusinterface.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\tml.h" />
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\vendortest.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc_Internal.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Common.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Extensions.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_RfConfigProp.h" />
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Sequence.h" />
+    <ClInclude Include="third_party\aosp-nxp-download\halimpl\pn54x\dnld\phDnldNfc_Utils.h" />
+    <ClInclude Include="third_party\aosp-nxp-download\shim\phNxpLog.h" />
+    <ClInclude Include="third_party\microsoft-nfc\inc\tracecommon.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcCompId.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcConfig.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcHalTypes2.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcInterface.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcStatus.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcTraceEnums.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcTypes.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcTypes_Mapping.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phOsalNfc.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phOsalNfc_Timer.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phTmlNfc.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Inc\NfcCoreLibTracing.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_Core.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreIf.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreMemMgr.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CorePch.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecv.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecvMgr.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreSend.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreStatus.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreUtils.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_DbgDescription.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_LoglConnMgmt.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_State.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_TlvUtils.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfcTypes.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_Internal.h" />
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_Pch.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

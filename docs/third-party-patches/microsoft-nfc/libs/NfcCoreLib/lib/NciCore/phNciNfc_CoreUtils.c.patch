@@ -1,0 +1,22 @@
+--- upstream/nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_CoreUtils.c
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_CoreUtils.c
+@@ -225,16 +225,15 @@
+     uint8_t bGid = 0;
+     uint8_t bOid = 0;
+     uint8_t bConn_ID = 0;
+-    uint8_t bPayloadLen = 0;
+     NFCSTATUS wStatus = NFCSTATUS_INVALID_PARAMETER;
+ 
+     PH_LOG_NCI_FUNC_ENTRY();
+ 
+     if((NULL != pContext) && (NULL != pBuff))
+     {
+-        /* Verify payload length */
+-        bPayloadLen = PHNCINFC_CORE_GET_LENBYTE(pBuff);
+-        if((PHNCINFC_CORE_PKT_HEADER_LEN + bPayloadLen) != wLength)
++        /* Local hardening: validate the header extent before reading byte 2. */
++        if((wLength < PHNCINFC_CORE_PKT_HEADER_LEN) ||
++           ((PHNCINFC_CORE_PKT_HEADER_LEN + PHNCINFC_CORE_GET_LENBYTE(pBuff)) != wLength))
+         {
+             PH_LOG_NCI_CRIT_STR("Incorrect payload length");
+             wStatus = PH_NCINFC_STATUS_INVALID_PKT_LEN;

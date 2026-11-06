@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <NxpUseDebugLibraries Condition="'$(Configuration)'=='Debug'">true</NxpUseDebugLibraries>
+    <NxpUseDebugLibraries Condition="'$(Configuration)'!='Debug'">false</NxpUseDebugLibraries>
+    <!-- WDK 26100 installs VS17 task assemblies only. VC targets are already
+         resolved when this file is imported; retain the installed VC toolset. -->
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)'=='18.0' and Exists('$(MSBuildProgramFiles32)\Windows Kits\10\build\10.0.26100.0\bin\Microsoft.DriverKit.Build.Tasks.17.0.dll') and !Exists('$(MSBuildProgramFiles32)\Windows Kits\10\build\10.0.26100.0\bin\Microsoft.DriverKit.Build.Tasks.18.0.dll')">17.0</VisualStudioVersion>
+  </PropertyGroup>
+</Project>

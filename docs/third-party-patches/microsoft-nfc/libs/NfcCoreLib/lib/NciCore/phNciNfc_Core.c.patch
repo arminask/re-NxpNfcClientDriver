@@ -1,0 +1,41 @@
+--- upstream/nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_Core.c
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_Core.c
+@@ -168,37 +168,7 @@
+     return wStatus;
+ }
+ 
+-void phNciNfc_CleanCoreContext(pphNciNfc_CoreContext_t pContext)
+-{
+-    PH_LOG_NCI_FUNC_ENTRY();
+-    if(NULL != pContext)
+-    {
+-        phOsalNfc_SetMemory(&pContext->tRspCtx, 0x00, sizeof(phNciNfc_CoreRspRegContext_t));
+-        phOsalNfc_SetMemory(&pContext->tNtfCtx, 0x00, sizeof(phNciNfc_CoreNtfRegContext_t));
+-
+-        /* Clear Nci Core and Context structures content */
+-        phOsalNfc_SetMemory(&pContext->SendStateContext,0,sizeof(phNciNfc_SendStateContext_t));
+-        phOsalNfc_SetMemory(&pContext->RecvStateContext,0,sizeof(phNciNfc_RecvStateContext_t));
+-        phOsalNfc_SetMemory(&pContext->tSendInfo,0,sizeof(phNciNfc_CoreSendInfo_t));
+-        phOsalNfc_SetMemory(&pContext->TxInfo,0,sizeof(phNciNfc_CoreTxInfo_t));
+-
+-        pContext->IntNtf = NULL;
+-        pContext->pNtfContext = NULL;
+-        pContext->bMaxCtrlPktPayloadLen = 0;
+-        pContext->dwBytes_Remaining = 0;
+-
+-        phOsalNfc_SetMemory(&pContext->tReceiveInfo.HeaderInfo,0,sizeof(phNciNfc_sCoreHeaderInfo_t));
+-
+-        /* Delete linked list */
+-        phNciNfc_CoreDeleteList(pContext);
+-    }
+-    else
+-    {
+-         PH_LOG_NCI_CRIT_STR("Invalid input parameter");
+-    }
+-    PH_LOG_NCI_FUNC_EXIT();
+-    return ;
+-}
++
+ 
+ static void
+ phNciNfc_CoreReleaseSendRecvStateMachines(void *pContext)

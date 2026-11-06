@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{A4FE241F-80B8-5E8F-BCC3-5FCA89839C33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\NfcCx\Clients\NfcI2C">
+      <UniqueIdentifier>{07380BBC-0BE5-5355-86B0-DA563FFC46BC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\NfcCx\Clients\NxpCoreLib">
+      <UniqueIdentifier>{5A98BA98-5C60-5394-9E6A-90059D2CC43E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\aosp-nxp-download\halimpl\pn54x\dnld">
+      <UniqueIdentifier>{AA6BF0E5-4E45-5C7D-B20D-9A4BFF1D38BF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\aosp-nxp-download\shim">
+      <UniqueIdentifier>{549CDAE8-02AA-586C-A06D-58E13D27BFD5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\microsoft-nfc\inc">
+      <UniqueIdentifier>{AD957CF2-F264-5FF8-8D2C-0AB840134C62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc">
+      <UniqueIdentifier>{691E448B-0ED3-5DF6-B675-7504B8031E44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Inc">
+      <UniqueIdentifier>{E3C519EB-9F94-58C5-B34D-0A50B2BA780F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Nci">
+      <UniqueIdentifier>{44731336-98AF-5DC7-B22E-E75216FC053E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore">
+      <UniqueIdentifier>{F756F4E4-2ABA-5249-B51C-4B5B1559CB11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal">
+      <UniqueIdentifier>{02D38181-B80F-53AA-B49C-A4E034FF59A6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Nci\phNciNfc_Sequence.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Nci</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreIf.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreMemMgr.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecv.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecvMgr.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_MsgQueue.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_Timer.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreUtils.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_TlvUtils.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_LoglConnMgmt.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_Core.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreSend.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClCompile Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_DbgDescription.c">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClCompile>
+    <ClInclude Include="include\nci_packet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_nci_context.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_sequence_bridge.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_trace.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\nxp_utils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\acpi.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\device.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\driver.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\NfcNxpProprietary.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\NfcProximityBusI2c.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\nfcproximitybusinterface.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\tml.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NfcI2C\vendortest.h">
+      <Filter>src\NfcCx\Clients\NfcI2C</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phDnldNfc_Internal.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Common.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Extensions.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_RfConfigProp.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NfcCx\Clients\NxpCoreLib\phNciNfc_Sequence.h">
+      <Filter>src\NfcCx\Clients\NxpCoreLib</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\aosp-nxp-download\halimpl\pn54x\dnld\phDnldNfc_Utils.h">
+      <Filter>third_party\aosp-nxp-download\halimpl\pn54x\dnld</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\aosp-nxp-download\shim\phNxpLog.h">
+      <Filter>third_party\aosp-nxp-download\shim</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\inc\tracecommon.h">
+      <Filter>third_party\microsoft-nfc\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcCompId.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcConfig.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcHalTypes2.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcInterface.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcStatus.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcTraceEnums.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcTypes.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phNfcTypes_Mapping.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phOsalNfc.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phOsalNfc_Timer.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\inc\phTmlNfc.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Inc\NfcCoreLibTracing.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_Core.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreIf.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreMemMgr.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CorePch.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecv.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreRecvMgr.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreSend.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreStatus.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_CoreUtils.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_DbgDescription.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_LoglConnMgmt.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_State.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfc_TlvUtils.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore\phNciNfcTypes.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\NciCore</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_Internal.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal</Filter>
+    </ClInclude>
+    <ClInclude Include="third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal\phOsalNfc_Pch.h">
+      <Filter>third_party\microsoft-nfc\libs\NfcCoreLib\lib\Osal</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

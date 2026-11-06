@@ -1,0 +1,131 @@
+--- upstream/libs/NfcCoreLib/lib/Osal/phOsalNfc.c
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/lib/Osal/phOsalNfc.c
+@@ -81,7 +81,7 @@
+     {NFCSTATUS_CONNECTION_FAILED,           STATUS_UNSUCCESSFUL},
+ };
+ 
+-phOsalNfc_Context_t *gpphOsalNfc_Context = NULL;
++phOsalNfc_Context_t *gpphOsalNfc_ClientDriver_Context = NULL;
+ 
+ void phOsalNfc_RaiseException(phOsalNfc_ExceptionType_t eExceptiontype, uint16_t reason)
+ {
+@@ -93,64 +93,38 @@
+     }
+ }
+ 
+-NFCSTATUS phOsalNfc_CreateMutex(void **hMutex)
+-{
+-    NFCSTATUS wStatus = NFCSTATUS_SUCCESS;
+-    LPCRITICAL_SECTION pLock = NULL;
+-    PH_LOG_OSAL_FUNC_ENTRY();
+-
+-    if (NULL != hMutex)
+-    {
+-        pLock = (LPCRITICAL_SECTION) malloc(sizeof(CRITICAL_SECTION));
+-
+-        if (NULL != pLock)
+-        {
+-            InitializeCriticalSection(pLock);
+-            *hMutex = pLock;
+-        }
+-        else
+-        {
+-            PH_LOG_OSAL_INFO_STR("OSAL out of memory");
+-            wStatus = PHNFCSTVAL(CID_NFC_OSAL, NFCSTATUS_INSUFFICIENT_RESOURCES);
+-        }
+-    }
+-    else
+-    {
+-        PH_LOG_OSAL_INFO_STR("OSAL Invalid parameter");
+-        wStatus = PHNFCSTVAL(CID_NFC_OSAL, NFCSTATUS_INVALID_PARAMETER);
+-    }
+-
+-    PH_LOG_OSAL_FUNC_EXIT();
+-    return wStatus;
+-}
+-
+ NFCSTATUS phOsalNfc_Init(pphOsalNfc_Config_t pOsalConfig)
+ {
+     NFCSTATUS wInitStatus = NFCSTATUS_SUCCESS;
+     PH_LOG_OSAL_FUNC_ENTRY();
+ 
+     /* Check whether OSAL is already Initialized */
+-    if(NULL == gpphOsalNfc_Context)
++    if(NULL == gpphOsalNfc_ClientDriver_Context)
+     {
+         if( (NULL != pOsalConfig) &&
+             (NULL != pOsalConfig->pfnCallback) &&
+             (NULL != pOsalConfig->pCallbackContext) )
+         {
+-            gpphOsalNfc_Context = phOsalNfc_GetMemory(sizeof(phOsalNfc_Context_t));
+-            if(NULL != gpphOsalNfc_Context)
++            gpphOsalNfc_ClientDriver_Context = phOsalNfc_GetMemory(sizeof(phOsalNfc_Context_t));
++            if(NULL != gpphOsalNfc_ClientDriver_Context)
+             {
+-                phOsalNfc_SetMemory((void *)gpphOsalNfc_Context,0x00,sizeof(phOsalNfc_Context_t));
++                phOsalNfc_SetMemory((void *)gpphOsalNfc_ClientDriver_Context,0x00,sizeof(phOsalNfc_Context_t));
+ 
+                 wInitStatus = phOsalNfc_MsgQueue_Init();
+                 if(NFCSTATUS_SUCCESS == wInitStatus)
+                 {
+-                    gpphOsalNfc_Context->pfnCallback = pOsalConfig->pfnCallback;
+-                    gpphOsalNfc_Context->pCallbackContext = pOsalConfig->pCallbackContext;
+-                    pOsalConfig->dwCallbackThreadId = gpphOsalNfc_Context->dwCallbackThreadID;
++                    gpphOsalNfc_ClientDriver_Context->pfnCallback = pOsalConfig->pfnCallback;
++                    gpphOsalNfc_ClientDriver_Context->pCallbackContext = pOsalConfig->pCallbackContext;
++                    pOsalConfig->dwCallbackThreadId = gpphOsalNfc_ClientDriver_Context->dwCallbackThreadID;
+                     phOsalNfc_Timer_Init();
+                 }
+                 else
+                 {
++                    /* Local hardening: no worker or TimerLock exists on queue-init failure. */
++                    phOsalNfc_MsgQueue_DeInit();
++                    phOsalNfc_SetMemory((void *)gpphOsalNfc_ClientDriver_Context, 0x00, sizeof(phOsalNfc_Context_t));
++                    phOsalNfc_FreeMemory((void *)gpphOsalNfc_ClientDriver_Context);
++                    gpphOsalNfc_ClientDriver_Context = NULL;
+                     wInitStatus = PHNFCSTVAL(CID_NFC_OSAL, NFCSTATUS_FAILED);
+                 }
+             }
+@@ -179,24 +153,18 @@
+ void phOsalNfc_DeInit(void )
+ {
+     PH_LOG_OSAL_FUNC_ENTRY();
+-    if(NULL != gpphOsalNfc_Context)
++    if(NULL != gpphOsalNfc_ClientDriver_Context)
+     {
+         phOsalNfc_Timer_DeInit();
+         phOsalNfc_MsgQueue_DeInit();
++        DeleteCriticalSection(&gpphOsalNfc_ClientDriver_Context->TimerLock);
+ 
+         /* Reset all the values of the Context structure,release memory and set to NULL */
+-        phOsalNfc_SetMemory((void *)gpphOsalNfc_Context,0x00,sizeof(phOsalNfc_Context_t));
++        phOsalNfc_SetMemory((void *)gpphOsalNfc_ClientDriver_Context,0x00,sizeof(phOsalNfc_Context_t));
+ 
+-        phOsalNfc_FreeMemory((void *)gpphOsalNfc_Context);
+-        gpphOsalNfc_Context = NULL;
++        phOsalNfc_FreeMemory((void *)gpphOsalNfc_ClientDriver_Context);
++        gpphOsalNfc_ClientDriver_Context = NULL;
+     }
+-    PH_LOG_OSAL_FUNC_EXIT();
+-}
+-
+-void phOsalNfc_Delay(uint32_t dwDelay)
+-{
+-    PH_LOG_OSAL_FUNC_ENTRY();
+-    Sleep(dwDelay);
+     PH_LOG_OSAL_FUNC_EXIT();
+ }
+ 
+@@ -224,12 +192,3 @@
+     return NFCSTATUS_INVALID_PARAMETER;
+ }
+ 
+-NFCSTATUS
+-phOsalNfc_QueueDeferredCallback(
+-    _In_ pphOsalNfc_DeferFuncPointer_t  DeferredCallback,
+-    _In_ void*                          Context
+-    )
+-{
+-    phOsalNfc_PostMsg(PH_OSALNFC_DEFERRED_CALLBACK, (UINT_PTR) DeferredCallback, (UINT_PTR) Context, (UINT_PTR) NULL, (UINT_PTR) NULL);
+-    return NFCSTATUS_SUCCESS;
+-}

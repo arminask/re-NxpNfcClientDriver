@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copy to signing.local.props (ignored), then choose a CurrentUser\My
+     code-signing certificate. A thumbprint is public; never add a PFX/password. -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <NxpSigningCertificate>REPLACE_WITH_YOUR_CERTIFICATE_THUMBPRINT</NxpSigningCertificate>
+    <NxpTestSign>true</NxpTestSign>
+    <!-- Set true if an untrusted test root must fail the package build. -->
+    <NxpRequireTrustedSignature>false</NxpRequireTrustedSignature>
+    <!-- Original global registry provisioning fails modern INF isolation 1321. -->
+    <NxpRequireIsolation>false</NxpRequireIsolation>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,11 @@
+--- upstream/libs/NfcCoreLib/lib/Nci/phNciNfc_Sequence.c
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/lib/Nci/phNciNfc_Sequence.c
+@@ -4,7 +4,7 @@
+ *              Original code Copyright (c), NXP Semiconductors
+ */
+ 
+-#include "phNciNfc_Pch.h"
++#include "nxp_sequence_bridge.h"
+ 
+ #include "phNciNfc_Sequence.tmh"
+ 

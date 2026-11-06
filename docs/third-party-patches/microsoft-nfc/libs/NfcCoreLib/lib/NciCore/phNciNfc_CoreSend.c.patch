@@ -1,0 +1,90 @@
+--- upstream/nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_CoreSend.c
++++ included/third_party/microsoft-nfc/libs/NfcCoreLib/lib/NciCore/phNciNfc_CoreSend.c
+@@ -17,7 +17,6 @@
+ static uint8_t phNciNfc_CoreSendChkCreditAvail(void *pContext);
+ static uint8_t phNciNfc_CoreSendChkSize(void *pContext);
+ 
+-static NFCSTATUS phNciNfc_CoreSendIdleEntry(void *pContext);
+ static NFCSTATUS phNciNfc_CoreSendIdleExit(void *pContext);
+ static NFCSTATUS phNciNfc_CoreSendEntry(void *pContext);
+ static NFCSTATUS phNciNfc_CoreSendExit(void *pContext);
+@@ -111,21 +110,15 @@
+     return wStatus;
+ }
+ 
+-NFCSTATUS phNciNfc_CoreResetSenderStateMachine(void *pContext)
++
++
++NFCSTATUS phNciNfc_CoreReleaseSenderStateMachine(void *pContext)
+ {
+     NFCSTATUS wStatus = NFCSTATUS_SUCCESS;
+     pphNciNfc_CoreContext_t pCtx = (pphNciNfc_CoreContext_t)pContext;
+-    pphNciNfc_SendStateContext_t pStateCtx = NULL;
+-    PH_LOG_NCI_FUNC_ENTRY();
+-    if (NULL != pCtx)
+-    {
+-        pStateCtx = &(pCtx->SendStateContext);
+-        pStateCtx->pfConnector = phNciNfc_SendConnector;
+-        pStateCtx->pfStateFunction = phNciNfc_StateFptr;
+-        pStateCtx->pStateTransition = &(phNciNfc_SendTransition[0][0]);
+-        pStateCtx->CurrState = phNciNfc_StateSendIdle;
+-        pStateCtx->Evt = phNciNfc_EvtNone;
+-        PH_LOG_NCI_INFO_STR("phNciNfc_CoreResetSenderStateMachine: SUCCESS");
++    PH_LOG_NCI_FUNC_ENTRY();
++    if((NULL != pCtx) && (pCtx == PHNCINFC_GETNCICORECONTEXT()))
++    {
+     }else
+     {
+         wStatus = NFCSTATUS_INVALID_PARAMETER;
+@@ -134,34 +127,7 @@
+     return wStatus;
+ }
+ 
+-NFCSTATUS phNciNfc_CoreReleaseSenderStateMachine(void *pContext)
+-{
+-    NFCSTATUS wStatus = NFCSTATUS_SUCCESS;
+-    pphNciNfc_CoreContext_t pCtx = (pphNciNfc_CoreContext_t)pContext;
+-    PH_LOG_NCI_FUNC_ENTRY();
+-    if((NULL != pCtx) && (pCtx == PHNCINFC_GETNCICORECONTEXT()))
+-    {
+-    }else
+-    {
+-        wStatus = NFCSTATUS_INVALID_PARAMETER;
+-    }
+-    PH_LOG_NCI_FUNC_EXIT();
+-    return wStatus;
+-}
+-
+-void phNciNfc_CoreResetSendStateMachine(void *pContext)
+-{
+-    pphNciNfc_CoreContext_t pCoreCtx = (pphNciNfc_CoreContext_t)pContext;
+-    PH_LOG_NCI_FUNC_ENTRY();
+-    if((NULL != pCoreCtx) && (pCoreCtx == PHNCINFC_GETNCICORECONTEXT()))
+-    {
+-        /* Reset number of bytes to be sent */
+-        pCoreCtx->dwBytes_Remaining = 0;
+-        pCoreCtx->dwRspTimeOutMs = 0;
+-    }
+-    PH_LOG_NCI_FUNC_EXIT();
+-    return ;
+-}
++
+ 
+ #define STATE_IS_CONNECTOR(STATE)  \
+     ((STATE) > phNciNfc_STATE_SEND_MAX && (STATE)< phNciNfc_CONN_SEND_MAX)
+@@ -277,14 +243,7 @@
+     return Result;
+ }
+ 
+-static NFCSTATUS phNciNfc_CoreSendIdleEntry(void *pContext)
+-{
+-    NFCSTATUS wStatus = NFCSTATUS_SUCCESS;
+-    PH_LOG_NCI_FUNC_ENTRY();
+-    UNUSED(pContext);
+-    PH_LOG_NCI_FUNC_EXIT();
+-    return wStatus;
+-}
++
+ 
+ static NFCSTATUS phNciNfc_CoreSendIdleExit(void *pContext)
+ {
