@@ -1,0 +1,14 @@
+out/
+.vs/
+*.user
+*.suo
+*.pfx
+*.p12
+*.key
+*.cer
+*.obj
+*.lib
+*.dll
+*.pdb
+*.cat
+signing.local.props
